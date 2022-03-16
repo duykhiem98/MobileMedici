@@ -37,4 +37,8 @@ export default {
         Notify: 'Thông báo',
         WithdrawMoney: 'Rút tiền',
     },
+    label: {
+        systemManagement: 'Quản lý hệ thống',
+        vnd: 'VND',
+    },
 };

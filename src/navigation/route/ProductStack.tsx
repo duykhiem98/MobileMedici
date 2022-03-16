@@ -1,14 +1,14 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import SystemScreen from '../../screens/SystemScreen/SystemScreen';
+import ProductScreen from 'screens/ProductScreen/ProductScreen';
 import navigationConfigs from '../config/options';
 
 const Stack = createNativeStackNavigator();
 
 const ProductStack = () => (
-  <Stack.Navigator screenOptions={navigationConfigs}>
-    <Stack.Screen name={'SYSTEM'} component={SystemScreen} />
-  </Stack.Navigator>
+    <Stack.Navigator screenOptions={navigationConfigs}>
+        <Stack.Screen name={'PRODUCT'} component={ProductScreen} />
+    </Stack.Navigator>
 );
 
 export default ProductStack;

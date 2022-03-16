@@ -1,9 +1,11 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { memo } from 'react';
-import { IC_HOME } from '../../assets/icons';
-import { CustomTabBar, TabBarIcon } from '../component/customTabBar';
+import StyledTabBar from 'navigation/component/StyledTabBar';
+import { TAB_NAVIGATION_ROOT } from 'navigation/config/routes';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { IC_ACCOUNT, IC_CONTRACT, IC_PRODUCT, IC_SYSTEM, LOGO } from '../../assets/icons';
 import navigationConfigs from '../config/options';
 import AccountStack from './AccountStack';
 import ContractStack from './ContractStack';
@@ -11,57 +13,79 @@ import HomeStack from './HomeStack';
 import ProductStack from './ProductStack';
 import SystemStack from './SystemStack';
 
-const TabBarStack = createBottomTabNavigator();
-const TabBarStackComponent = memo(function TabBarStackComponent() {
-    return (
-        <TabBarStack.Navigator
-            screenOptions={navigationConfigs}
-            tabBar={(props) => <CustomTabBar {...props} />}
-            initialRouteName={'TRANGTRU'}
-        >
-            <TabBarStack.Screen
-                name={'HOPDONG'}
-                options={{
-                    title: 'Hợp đồng',
-                    tabBarIcon: ({ focused }) => <TabBarIcon isFocused={focused} icon={IC_HOME} />,
-                }}
-                component={ContractStack}
-            />
-            <TabBarStack.Screen
-                name={'SANPHAM'}
-                options={{
-                    title: 'Sản phẩm',
-                    tabBarIcon: ({ focused }) => <TabBarIcon isFocused={focused} icon={IC_HOME} />,
-                }}
-                component={ProductStack}
-            />
-            <TabBarStack.Screen name={'TRANGTRU'} component={HomeStack} />
-            <TabBarStack.Screen
-                name={'HETHONG'}
-                options={{
-                    title: 'Hệ thống',
-                    tabBarIcon: ({ focused }) => <TabBarIcon isFocused={focused} icon={IC_HOME} />,
-                }}
-                component={SystemStack}
-            />
-            <TabBarStack.Screen
-                name={'TAIKHOAN'}
-                options={{
-                    title: 'Tài khoản',
-                    tabBarIcon: ({ focused }) => <TabBarIcon isFocused={focused} icon={IC_HOME} />,
-                }}
-                component={AccountStack}
-            />
-        </TabBarStack.Navigator>
-    );
-});
+const MainTab = createBottomTabNavigator();
 
+const MainTabContainer = () => {
+    const { t } = useTranslation();
+    const ArrayTabs = [
+        {
+            name: TAB_NAVIGATION_ROOT.CONTRACT_ROUTE.ROOT,
+            title: 'Hợp đồng',
+            component: ContractStack,
+            icon: IC_CONTRACT,
+        },
+        {
+            name: TAB_NAVIGATION_ROOT.PRODUCT_ROUTE.ROOT,
+            title: 'Sản phẩm',
+            component: ProductStack,
+            icon: IC_PRODUCT,
+        },
+        {
+            name: TAB_NAVIGATION_ROOT.HOME_ROUTE.ROOT,
+            component: HomeStack,
+            // icon: LOGO,
+        },
+        {
+            name: TAB_NAVIGATION_ROOT.SYSTEM_ROUTE.ROOT,
+            title: 'Hệ thống',
+            component: SystemStack,
+            icon: IC_SYSTEM,
+        },
+        {
+            name: TAB_NAVIGATION_ROOT.ACCOUNT_ROUTE.ROOT,
+            title: 'Tài khoản',
+            component: AccountStack,
+            icon: IC_ACCOUNT,
+        },
+    ];
+    return (
+        <MainTab.Navigator
+            screenOptions={navigationConfigs}
+            tabBar={(props: BottomTabBarProps) => <StyledTabBar {...props} />}
+        >
+            {ArrayTabs.map((item, index) => (
+                <MainTab.Screen
+                    key={`${index}`}
+                    options={({ navigation }) => {
+                        const { routes } = navigation.getState();
+                        const { state } = routes[index];
+                        if (state) {
+                            if (state.index !== 0) {
+                                return {
+                                    title: item.title,
+                                    icon: item.icon,
+                                    tabBarVisible: false,
+                                };
+                            }
+                        }
+                        return {
+                            title: item.title,
+                            icon: item.icon,
+                            tabBarVisible: true,
+                        };
+                    }}
+                    {...item}
+                />
+            ))}
+        </MainTab.Navigator>
+    );
+};
 const Stack = createNativeStackNavigator();
 const routes = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={navigationConfigs}>
-                <Stack.Screen name="TabBarStackComponent" component={TabBarStackComponent} />
+                <Stack.Screen name="TabBarStackComponent" component={MainTabContainer} />
             </Stack.Navigator>
         </NavigationContainer>
     );
