@@ -36,7 +36,7 @@ const SystemScreen = () => {
                 customStyle={styles.topStyle}
             />
             <KeyboardAwareScrollView bounces={false} showsVerticalScrollIndicator={false}>
-                <View style={{ height: 40 }} />
+                <View style={{ height: 50 }} />
                 <View style={styles.paddingStyle}>
                     <SystemManagerComponent
                         isShowIcon={isShow}
@@ -64,7 +64,8 @@ const SystemScreen = () => {
                         isShowIcon={isShow}
                         iconLeft={<Icon_Vi />}
                         moneyLeft={'2000000'}
-                        txtLeft={'Doanh thu Cá nhân'}
+                        onPress={() => navigation.navigate(TAB_NAVIGATION_ROOT.SYSTEM_ROUTE.SYSTEM_REVENUE)}
+                        txtLeft={'Doanh thu hệ thống'}
                     />
                 </View>
                 <View style={styles.paddingStyle}>
@@ -72,7 +73,8 @@ const SystemScreen = () => {
                         isShowIcon={isShow}
                         iconLeft={<Icon_Vi />}
                         moneyLeft={'2000000'}
-                        txtLeft={'Doanh thu Cá nhân'}
+                        onPress={() => navigation.navigate(TAB_NAVIGATION_ROOT.SYSTEM_ROUTE.DOWNLINE_AGENT)}
+                        txtLeft={'Đại lý tuyến dưới'}
                     />
                 </View>
                 <View style={styles.paddingStyle}>
@@ -80,7 +82,7 @@ const SystemScreen = () => {
                         isShowIcon={isShow}
                         iconLeft={<Icon_Vi />}
                         moneyLeft={'2000000'}
-                        txtLeft={'Doanh thu Cá nhân'}
+                        txtLeft={'Điểm thăng tiến'}
                     />
                 </View>
             </KeyboardAwareScrollView>

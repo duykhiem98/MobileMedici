@@ -127,6 +127,8 @@ const common = {
     color_D92424: '#D92424',
     color_F4F8FB: '#F4F8FB',
     color_C4DBF1: '#C4DBF1',
+    color_1CAE6D: '#1CAE6D',
+    color_898E93: '#898E93',
 
     span: {
         color: '#23ace3',

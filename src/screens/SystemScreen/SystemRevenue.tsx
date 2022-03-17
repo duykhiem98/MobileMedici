@@ -45,7 +45,7 @@ const data = [
         revenue: '100000000',
     },
 ];
-const PersonalRevenue = () => {
+const SystemRevenue = () => {
     const navigation = useNavigation();
     const back = () => {
         navigation.goBack();
@@ -81,7 +81,6 @@ const PersonalRevenue = () => {
                 onChangeSearch={onChangeSearch}
                 setText={setTextSearch}
             />
-
             <FlatList
                 data={filterData}
                 renderItem={renderItem}
@@ -107,4 +106,4 @@ const styles = ScaledSheet.create({
         color: Themes.Light.COLORS.white,
     },
 });
-export default PersonalRevenue;
+export default SystemRevenue;

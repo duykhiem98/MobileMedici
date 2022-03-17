@@ -7,3 +7,4 @@ export const IC_PRODUCT = require('./product.png');
 export const IC_SYSTEM = require('./chart-square-bar.png');
 export const IC_ACCOUNT = require('./Group.png');
 export const LOGO = require('./logo_menu1.png');
+export const ArowDown = require('./ChevronDown.png');

@@ -1,6 +1,6 @@
 import { Icon_Search } from 'assets';
 import { Themes } from 'assets/themes';
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleProp, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { ScaledSheet } from 'react-native-size-matters';
 import { stringMoneyToNumber } from 'utilities/helpers';
@@ -27,6 +27,8 @@ interface Props {
     search?: boolean;
     txtPlacehoder?: string;
     setShow?(value: boolean): void;
+    setText?(value: string): void;
+    onChangeSearch?(value: string): void;
 }
 const RevenueView = (props: Props) => {
     const {
@@ -43,22 +45,21 @@ const RevenueView = (props: Props) => {
         iconRightHide,
         iconRight,
         search,
+        setText = '',
+        onChangeSearch = () => {},
         setShow = () => {},
     } = props;
 
     const onPress = () => {
         setShow(!isShowIcon);
     };
-    const [textSearch, setTextSearch] = useState<string>('');
-    const onChangeSearch = (value: string) => {
-        setTextSearch(value);
-    };
+
     return (
         <View style={styles.container}>
             <View style={[styles.RevenueStyle, customStyle]}>
                 {search && (
                     <StyledInput
-                        value={textSearch}
+                        value={setText}
                         iconLeft={<Icon_Search />}
                         onChangeInput={onChangeSearch}
                         customPlaceHolder={txtPlacehoder}
@@ -207,6 +208,9 @@ const styles = ScaledSheet.create({
         color: Themes.Light.COLORS.resolutionBlue,
         paddingLeft: '1@s',
         fontSize: '18@ms',
+    },
+    topStyle: {
+        height: '131@vs',
     },
 });
 export default RevenueView;
