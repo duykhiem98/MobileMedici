@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Themes } from 'assets/themes';
 import StyledText from 'components/common/StyledText';
 import React from 'react';

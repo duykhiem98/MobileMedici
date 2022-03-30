@@ -1,13 +1,18 @@
+/* eslint-disable prettier/prettier */
 import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import StyledTabBar from 'navigation/component/StyledTabBar';
-import { TAB_NAVIGATION_ROOT } from 'navigation/config/routes';
+import { ACCOUNT_ROUTE, APP_ROUTE, TAB_NAVIGATION_ROOT } from 'navigation/config/routes';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { IC_ACCOUNT, IC_CONTRACT, IC_PRODUCT, IC_SYSTEM, LOGO } from '../../assets/icons';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { Host } from 'react-native-portalize';
+import { useAppSelector } from 'redux-store/hooksrd';
+import { useInitApp } from 'utilities/initApp';
+import { IC_ACCOUNT, IC_CONTRACT, IC_PRODUCT, IC_SYSTEM } from '../../assets/icons';
 import navigationConfigs from '../config/options';
 import AccountStack from './AccountStack';
+import AuthStack from './AuthStack';
 import ContractStack from './ContractStack';
 import HomeStack from './HomeStack';
 import ProductStack from './ProductStack';
@@ -81,13 +86,39 @@ const MainTabContainer = () => {
     );
 };
 const Stack = createNativeStackNavigator();
-const routes = () => {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={navigationConfigs}>
-                <Stack.Screen name="TabBarStackComponent" component={MainTabContainer} />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+const Route = () => (
+    <Host>
+        <Stack.Navigator screenOptions={navigationConfigs}>
+            <Stack.Screen name={APP_ROUTE.MAIN_TAB} component={MainTabContainer} />
+        </Stack.Navigator>
+    </Host>
+);
+
+const Navigation: React.FunctionComponent = () => {
+    const token = useAppSelector((state) => state.user.token);
+    const { loading } = useInitApp();
+    // useEffect(() => {
+    //     const noti = notificationListener();
+    //     return noti;
+    // }, []);
+    if (loading) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" />
+            </View>
+        );
+    } else {
+        if (token) {
+            return <Route />;
+        }
+        return <AuthStack />;
+    }
 };
-export default routes;
+const styles = StyleSheet.create({
+    loadingContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
+export default Navigation;

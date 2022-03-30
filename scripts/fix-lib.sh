@@ -16,4 +16,7 @@ fi
 if [ ./react-native-calendar-picker/HeaderControls.js]; then
   cp ./react-native-calendar-picker/HeaderControls.js ../node_modules/./react-native-calendar-picker/CalendarPicker/HeaderControls.js
 fi
+if [ ./react-native-calendar-picker/HeaderControls.js]; then
+  cp ./react-native-calendar-picker/HeaderControls.js ../node_modules/./react-native-calendar-picker/CalendarPicker/Controls.js
+fi
 

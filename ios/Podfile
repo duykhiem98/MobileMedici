@@ -14,6 +14,8 @@ target 'Medici' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
+
   target 'MediciTests' do
     inherit! :complete
     # Pods for testing

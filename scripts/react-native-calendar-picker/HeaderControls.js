@@ -46,10 +46,10 @@ export default function HeaderControls(props) {
     return (
         <View style={[styles.headerWrapper, headerWrapperStyle]}>
             <Controls
-                disabled={true}
+                disabled={false}
                 label={previousTitle}
                 component={previousComponent}
-                onPressControl={onPressPrevious}
+                onPressControl={() => {}}
                 styles={styles.previousContainer}
                 textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
             />
@@ -66,10 +66,10 @@ export default function HeaderControls(props) {
                 </TouchableOpacity>
             </View>
             <Controls
-                disabled={true}
+                disabled={false}
                 label={nextTitle}
                 component={nextComponent}
-                onPressControl={onPressNext}
+                onPressControl={() => {}}
                 styles={styles.nextContainer}
                 textStyles={[styles.navButtonText, textStyle, nextTitleStyle]}
             />

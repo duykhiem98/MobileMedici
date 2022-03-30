@@ -1,23 +1,25 @@
-import { View, Text, StyleProp, TextStyle, ViewStyle, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { ScaledSheet } from 'react-native-size-matters';
-import StyledText from 'components/common/StyledText';
+/* eslint-disable prettier/prettier */
 import { Themes } from 'assets/themes';
+import StyledText from 'components/common/StyledText';
+import React from 'react';
+import { StyleProp, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { ScaledSheet } from 'react-native-size-matters';
 interface Props {
     customStyle?: StyleProp<ViewStyle>;
     titleLeft?: string;
     titleLeftStyle?: StyleProp<TextStyle>;
     titleRight?: string;
     titleRightStyle?: StyleProp<TextStyle>;
+    onPress?(): void;
 }
 
 const TitleComponent = (props: Props) => {
-    const { customStyle, titleRightStyle, titleRight, titleLeft, titleLeftStyle } = props;
+    const { customStyle, titleRightStyle, titleRight, titleLeft, titleLeftStyle, onPress = () => {} } = props;
     return (
         <View style={[styles.container, customStyle]}>
             <StyledText originText={titleLeft} customStyle={[styles.titleLeft, titleLeftStyle]} />
             {titleRight && (
-                <TouchableOpacity>
+                <TouchableOpacity onPress={onPress}>
                     <StyledText originText={titleRight} customStyle={[styles.titleRight, titleRightStyle]} />
                 </TouchableOpacity>
             )}

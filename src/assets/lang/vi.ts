@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export default {
     bottomTab: {
         home: 'Easy Credit',
@@ -11,12 +12,15 @@ export default {
         district: 'Quận/Huyện',
         subDistrict: 'Phường/Xã',
         detailAddress: 'Địa chỉ chi tiết',
+        phoneNumber: ' số điện thoại',
+        password: 'Mật khẩu',
     },
     button: {
         txtLogin: 'Đăng nhập',
         ok: 'Đồng ý',
         txtLoginFacebook: 'Đăng nhập với Facebook',
         txtLoginGoogle: 'Đăng nhập với Google',
+        register: 'Đăng ký ngay ',
         txtCancel: 'Hủy',
         txtSuccess: 'Hoàn thành',
         txtNext: 'Tiếp tục',
@@ -40,5 +44,12 @@ export default {
     label: {
         systemManagement: 'Quản lý hệ thống',
         vnd: 'VND',
+        image: 'Ảnh',
+        phoneNumber: ' số điện thoại',
+        password: 'Mật khẩu',
+        fogotPassword: ' Quên mật khẩu ?',
+    },
+    title: {
+        login: 'Đăng nhập',
     },
 };

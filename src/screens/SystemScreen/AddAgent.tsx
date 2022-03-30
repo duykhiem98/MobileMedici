@@ -1,5 +1,5 @@
-import { View, Text } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
+import { View } from 'react-native';
+import React, { useRef } from 'react';
 import Header from 'components/common/Header';
 import { useNavigation } from '@react-navigation/native';
 import { Icon_Back, Icon_Vi } from 'assets';
@@ -64,6 +64,18 @@ const AddAgent = () => {
                 onSelected={(value: string, key: string) => onSelectedDate(value, key)}
             />
             <KeyboardAwareScrollView showsVerticalScrollIndicator={false} style={{ paddingHorizontal: 16 }}>
+                <StyledTextInput
+                    isDisableRight={false}
+                    require
+                    name="name"
+                    label="Họ và Tên"
+                    // errorMessage={errors?.issue_date?.message}
+                    control={control}
+                    customPlaceHolder={'Họ và Tên'}
+                    customLabel={styles.labelTextInput}
+                    customStyle={styles.customStyleTextInput}
+                    inputContainerStyle={styles.inputContainerStyle}
+                />
                 <StyledTextInput
                     isDisableRight={false}
                     require

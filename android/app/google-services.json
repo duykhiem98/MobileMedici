@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "223296896242",
+    "project_id": "athur4-1-2022",
+    "storage_bucket": "athur4-1-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223296896242:android:fec14a0f67bd33ca3ba46b",
+        "android_client_info": {
+          "package_name": "com.medici"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223296896242-071ad9hlhpoitvjrkjfjeocpdfapcqst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.medici",
+            "certificate_hash": "639c88632e4e293af98b7ef1492f111f7114f6f7"
+          }
+        },
+        {
+          "client_id": "223296896242-hh6d8nmu53235b5mcui5cmn6tdq4hrv7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEMpuCGzVB6Y-XsT4SsnV4C5JLWl3aTRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223296896242-hh6d8nmu53235b5mcui5cmn6tdq4hrv7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

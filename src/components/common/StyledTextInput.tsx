@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IconError } from 'assets';
 import { Themes } from 'assets/themes';
 import React, { useEffect, useState } from 'react';
@@ -22,7 +23,7 @@ import StyledView from './StyledView';
 
 interface Props extends TextInputProps {
     ref?: any;
-    label: string;
+    label?: string;
     require?: boolean;
     iconLeft?: any;
     iconRight?: any;
@@ -43,7 +44,7 @@ interface Props extends TextInputProps {
     isDisableRight?: boolean;
     customContainer?: StyleProp<ViewStyle>;
     moneyFormat?: boolean;
-
+    pattern: any;
     control: any;
     name?: string;
     errorMessage?: string;
@@ -66,6 +67,7 @@ const StyledTextInput = (props: Props, ref: any) => {
         iconRightHide,
         moneyFormat,
         rightOnPress,
+        pattern,
         onSearch = () => {},
     } = props;
     const { field } = useController({
@@ -173,7 +175,7 @@ const styles = ScaledSheet.create({
         color: Themes.Light.COLORS.textSecondary,
     },
     labelContainer: {
-        paddingVertical: '5@vs',
+        // paddingVertical: '5@vs',
     },
     errorMessage: {
         color: Themes.Light.COLORS.color_D92424,
@@ -192,13 +194,13 @@ const styles = ScaledSheet.create({
         flex: 1,
     },
     inputContainer: {
-        height: '60@vs',
+        height: '54@vs',
         width: '100%',
         paddingVertical: '8@vs',
         paddingHorizontal: '5@s',
         borderColor: Themes.Light.COLORS.color_C1C1C1,
-        borderWidth: 1.5,
-        borderRadius: 10,
+        // borderWidth: 1.5,
+        // borderRadius: 10,
         alignItems: 'center',
         flex: 1,
         flexDirection: 'row',

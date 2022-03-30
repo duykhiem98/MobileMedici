@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useNavigation } from '@react-navigation/native';
 import { Icon_Back } from 'assets';
 import { Themes } from 'assets/themes';
